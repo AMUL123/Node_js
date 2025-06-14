@@ -20,10 +20,11 @@ app.use(logRequest);
 
 
 app.use(passport.initialize());
-const localAuthMiddleware = passport.authenticate('local', {session: false})
+const localAuthMiddleware = passport.authenticate('local', {session: false});
+
 app.get('/' ,function (req, res) {
     res.send('Welcome to our hotel');
-})
+});
 
 
 
@@ -54,7 +55,7 @@ app.get('/api/tasks', async (req, res) => {
 });
 
 const personRoutes = require('./routes/personRoutes');
-app.use('/person',localAuthMiddleware, personRoutes);
+app.use('/person', personRoutes);
 
 const menuRoutes = require('./routes/menuRoutes');
 app.use('/menu',menuRoutes);
